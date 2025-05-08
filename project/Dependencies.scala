@@ -1,4 +1,4 @@
-import sbt._
+import sbt.*
 
 object Dependencies {
 
@@ -7,10 +7,12 @@ object Dependencies {
   lazy val ScalaTest = "org.scalatest" %% "scalatest" % "3.2.19"
   lazy val CatsCore = "org.typelevel" %% "cats-core" % "2.13.0"
   lazy val CatsEffect = "org.typelevel" %% "cats-effect" % "3.4.5"
-  lazy val ZIO: Seq[ModuleID] = Seq("dev.zio" %% "zio" % ZioVersion,
-                     "dev.zio" %% "zio-test" % ZioVersion  % Test,
-                     "dev.zio" %% "zio-test-sbt" % ZioVersion  % Test,
-                     "dev.zio" %% "zio-test-magnolia" % ZioVersion % Test)
+  lazy val ZIO: Seq[ModuleID] = Seq(
+    "dev.zio" %% "zio" % ZioVersion,
+    "dev.zio" %% "zio-test" % ZioVersion % Test,
+    "dev.zio" %% "zio-test-sbt" % ZioVersion % Test,
+    "dev.zio" %% "zio-test-magnolia" % ZioVersion % Test
+  )
   lazy val ZIOHttpVersion = "1.0.0.0-RC27"
   lazy val LiquibaseVersion = "3.4.2"
   lazy val PostgresVersion = "42.3.1"
@@ -18,7 +20,7 @@ object Dependencies {
 
   lazy val fs2: Seq[ModuleID] = Seq(
     "co.fs2" %% "fs2-core" % "3.6.1",
-    "co.fs2" %% "fs2-io"   % "3.6.1"
+    "co.fs2" %% "fs2-io" % "3.6.1"
   )
 
   lazy val ZioConfig: Seq[ModuleID] = Seq(
@@ -26,12 +28,12 @@ object Dependencies {
     "dev.zio" %% "zio-config-magnolia" % "4.0.2",
     "dev.zio" %% "zio-config-typesafe" % "4.0.2"
   )
+
   lazy val http4s: Seq[ModuleID] = Seq(
     "org.http4s" %% "http4s-client" % "0.23.18",
     "org.http4s" %% "http4s-dsl" % "0.23.18",
     "org.http4s" %% "http4s-ember-server" % "0.23.18",
     "org.http4s" %% "http4s-ember-client" % "0.23.18",
-
   )
 
   lazy val circe = Seq(
@@ -45,18 +47,18 @@ object Dependencies {
   lazy val zioHttp = "io.d11" %% "zhttp" % ZIOHttpVersion
 
   lazy val quill = Seq(
-    "io.getquill"          %% "quill-jdbc-zio" % "4.8.5"
+    "io.getquill" %% "quill-jdbc-zio" % "4.8.5"
   )
 
   lazy val liquibase = "org.liquibase" % "liquibase-core" % LiquibaseVersion
 
-  lazy val  testContainers = Seq(
-    "com.dimafeng" %% "testcontainers-scala-postgresql" % "0.39.12"  % Test,
-    "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.39.12"  % Test
+  lazy val testContainers = Seq(
+    "com.dimafeng" %% "testcontainers-scala-postgresql" % "0.39.12" % Test,
+    "com.dimafeng" %% "testcontainers-scala-scalatest" % "0.39.12" % Test
   )
 
   lazy val postgres = "org.postgresql" % "postgresql" % PostgresVersion
 
-  lazy val logback = "ch.qos.logback"  %  "logback-classic" % LogbackVersion
+  lazy val logback = "ch.qos.logback" % "logback-classic" % LogbackVersion
 
 }
