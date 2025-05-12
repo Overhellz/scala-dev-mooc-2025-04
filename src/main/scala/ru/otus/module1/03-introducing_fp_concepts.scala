@@ -218,9 +218,9 @@ object hof{
     sealed trait List[+T] {
 
      // prepend
-     def +:[TT >: T](elem: TT): List[TT] = ???
+     def ::[TT >: T](elem: TT): List[TT] = ???
    }
-    case class ::[T](elem: T) extends List[T]
+    case class ::[T](elem: T, tail: List[T]) extends List[T]
     case object Nil extends List[Nothing]
 
    object List {
@@ -233,7 +233,6 @@ object hof{
 
    val l2: List[Cat] = List(Cat())
 
-   val l3: List[opt.Animal] = Dog() +: l2
 
 
 
