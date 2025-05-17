@@ -112,15 +112,18 @@ object opt {
   sealed trait Option[+T] {
     def isEmpty: Boolean = if (this.isInstanceOf[None.type]) true else false
 
-//    def get: T =  if(this.isInstanceOf[None.type]) throw new Exception("None get")
-//      else{
-//        val r = this.asInstanceOf[Some[T]]
-//        r.v
-//      }
+    def get: T = if (this.isInstanceOf[None.type]) throw new Exception("None get")
+    else {
+      val r = this.asInstanceOf[Some[T]]
+      r.v
+    }
 
     def map[B](f: T => B): Option[B] = flatMap(v => Option(f(v)))
 
-    def flatMap[B](f: T => Option[B]): Option[B] = ???
+    def flatMap[B](f: T => Option[B]): Option[B] = this match {
+      case Some(value) => f(value)
+      case None => None
+    }
   }
 
   case class Some[T](v: T) extends Option[T]
@@ -132,7 +135,7 @@ object opt {
       if (v == null) None else Some(v)
   }
 
-  val opt1: Option[Int] = ???
+  val opt1: Option[Int] = Some(42)
   val opt2: Option[Option[Int]] = opt1.map(i => Option(i + 1))
   val opt3: Option[Int] = opt1.flatMap(i => Option(i + 1))
 
@@ -140,29 +143,38 @@ object opt {
    *
    * Реализовать метод printIfAny, который будет печатать значение, если оно есть
    */
-
+  def printIfAny[A](option: Option[A]): Unit = {
+    if (!option.isEmpty) println(option.get)
+  }
 
   /**
    *
    * Реализовать метод zip, который будет создавать Option от пары значений из 2-х Option
    */
-
+  def zip[A, B](first: Option[A], second: Option[B]): Option[(A, B)] = (first, second) match {
+    case (Some(first), Some(second)) => Some((first, second))
+    case _ => None
+  }
 
   /**
    *
    * Реализовать метод filter, который будет возвращать не пустой Option
-   * в случае если исходный не пуст и предикат от значения = true
+   * в случае если исходный Option не пуст и предикат от значения = true
    */
+  def filter[A](option: Option[A], predicate: A => Boolean): Option[A] = option match {
+    case Some(option) if predicate.apply(option) => Some(option)
+    case _ => None
+  }
 }
 
 object list {
+
   /**
    * Реализовать одно связанный иммутабельный список List
    * Список имеет два случая:
    * Nil - пустой список
    * Cons - непустой, содержит первый элемент (голову) и хвост (оставшийся список)
    */
-
   def treat(a: Option[Animal]) = ???
 
   sealed trait List[+T] {
@@ -207,6 +219,8 @@ object list {
    *
    * Реализовать метод filter для списка который будет фильтровать список по некому условию
    */
+  def filter(arr: Array[Int]): Array[Int] = arr.map(_ + 1)
+
 
   /**
    *
@@ -221,6 +235,4 @@ object list {
    * где к каждому элементу будет добавлен префикс в виде '!'
    */
   def shoutString(arr: Array[String]): Array[String] = arr.map('!' + _)
-  
-  val a = shoutString(Array("a", "b", "c"))
 }
