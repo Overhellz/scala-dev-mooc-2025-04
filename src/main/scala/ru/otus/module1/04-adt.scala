@@ -113,6 +113,7 @@ object adt {
 
     case object Hearts extends Suit // червы
 
+
     sealed trait Rank // номинал
 
     case object Two extends Rank // двойка
@@ -140,6 +141,7 @@ object adt {
     case object King extends Rank // король
 
     case object Ace extends Rank // туз
+
 
     type Card // карта
     type Deck // колода
