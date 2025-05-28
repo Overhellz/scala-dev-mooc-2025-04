@@ -1,41 +1,34 @@
 package ru.otus
 
-import scala.collection.View
+import ru.otus.module1.concurrency
+import ru.otus.module1.concurrency.{getRatesLocation1, getRatesLocation2, printRunningTime}
 
 
 object App {
   def main(args: Array[String]): Unit = {
 
+    println(s"Hello from ${Thread.currentThread().getName}")
+    val t0 = new Thread{
+      override def run(): Unit = {
+        Thread.sleep(1000)
+        println(s"Hello from ${Thread.currentThread().getName}")
+      }
+    }
+//    val t1 = new concurrency.Thread1
+//    t0.start()
+//    t0.join()
+//    t1.start()
 
-    val list = List(1, 2, 3)
-
-    val lazyList = LazyList(1, 2, 3)
-
-    println(list)
-    println(lazyList)
-
-    val r1: View[Int] = list.view.map{ i =>
-      println(s"map $i")
-      i + 1
-    }.filter{ i =>
-      println(s"filter $i")
-      i % 2 == 0
+    def rates = {
+      getRatesLocation1.onComplete{ r1 =>
+        getRatesLocation2.onComplete{ r2 =>
+          println(r1 + r2)
+        }
+      }
     }
 
-    val r2 = lazyList.map{ i =>
-      println(s"map lazy $i")
-      i + 1
-    }.filter{ i =>
-      println(s"filter lazy $i")
-      i % 2 == 0
-    }
 
-    val r3 = r1.to(List)
-
-    val r4 = lazyList.zip(list)
-
-    println(r4)
-
+    printRunningTime(rates)
 
   }
 }
