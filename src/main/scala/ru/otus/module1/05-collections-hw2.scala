@@ -30,19 +30,24 @@ object hw2 {
     val count100000 = 100_000
     val count1000000 = 1_000_000
 
-    val experiment1000: Int = makeExperiment(count1000)
-    val experiment10000: Int = makeExperiment(count10000)
-    val experiment100000: Int = makeExperiment(count100000)
-    val experiment1000000: Int = makeExperiment(count1000000)
+    val experiment1000: Double = makeExperiment(count1000)
+    val experiment10000: Double = makeExperiment(count10000)
+    val experiment100000: Double = makeExperiment(count100000)
+    val experiment1000000: Double = makeExperiment(count1000000)
 
-    println(s"Result: $experiment1000 from $count1000")
-    println(s"Result: $experiment10000 from $count10000")
-    println(s"Result: $experiment100000 from $count100000")
-    println(s"Result: $experiment1000000 from $count1000000")
+    val result1000: Double = experiment1000 / count1000
+    val result10000: Double = experiment10000 / count10000
+    val result100000: Double = experiment100000 / count100000
+    val result1000000: Double = experiment1000000 / count1000000
 
-    //    Result: 796 from 1000
-    //    Result: 7925 from 10000
-    //    Result: 80034 from 100000
-    //    Result: 800676 from 1000000
+    println(result1000)
+    println(result10000)
+    println(result100000)
+    println(result1000000)
+
+    //    0.788
+    //    0.8029
+    //    0.79968
+    //    0.799049
   }
 }
