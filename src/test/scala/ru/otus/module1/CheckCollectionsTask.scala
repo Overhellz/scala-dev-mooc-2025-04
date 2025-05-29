@@ -1,12 +1,13 @@
 package ru.otus.module1
 
 import org.scalatest.flatspec.AnyFlatSpec
-import ru.otus.module1.homework.collections.CollectionsTask.{Auto, capitalizeIgnoringASCII,
-  filterAllLeftDealerAutoWithoutRight, intersectionAuto, numbersToNumericString}
+import ru.otus.module1.homework.collections.CollectionsTask.{
+  Auto, capitalizeIgnoringASCII, filterAllLeftDealerAutoWithoutRight, intersectionAuto, numbersToNumericString
+}
 
 class CheckCollectionsTask extends AnyFlatSpec {
 
-  "check capitalizeIgnoringASCII" should "ok" in  {
+  "check capitalizeIgnoringASCII" should "ok" in {
     assert(capitalizeIgnoringASCII(List("Lorem", "ipsum", "dolor", "sit", "amet")) == List("Lorem", "IPSUM", "DOLOR",
       "SIT", "AMET"))
     assert(capitalizeIgnoringASCII(List("Оказывается", ",", "ЗвУк", "КЛАВИШЬ")) === List("Оказывается", ",",
@@ -36,5 +37,4 @@ class CheckCollectionsTask extends AnyFlatSpec {
     val dealerTwoSecond = Seq(Auto("BMW", "i3"))
     assert(filterAllLeftDealerAutoWithoutRight(dealerOneSecond, dealerTwoSecond) === Set(Auto("Mazda", "X5")))
   }
-
 }
