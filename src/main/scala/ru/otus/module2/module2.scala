@@ -2,7 +2,7 @@ package ru.otus
 
 package object module2 {
 
-    implicit val seq = Seq("a", "b", "c") // Int => String
+//    implicit val seq = Seq("a", "b", "c") // Int => String
 
 
 //    implicit val v: implicits.implicit_scopes.Printer[implicits.implicit_scopes.Bar] =
