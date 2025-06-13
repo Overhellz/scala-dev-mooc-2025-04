@@ -2,7 +2,6 @@ package ru.otus.module1
 
 object sbt {
 
-
   /** SBT project structure
    *
    *
@@ -11,10 +10,10 @@ object sbt {
    *     main/
    *       resources/
    *         files to include in main jar here
-   *      scala/
-   *        main Scala sources
-   *      java/
-   *        main Java sources
+   *       scala/
+   *         main Scala sources
+   *       java/
+   *         main Java sources
    *   test/
    *     resources
    *       files to include in test jar here
@@ -30,6 +29,4 @@ object sbt {
    *       scala/
    *   build.sbt
    */
-
-
 }
